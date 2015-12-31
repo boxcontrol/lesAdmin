@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Server {{ name }} is booted: {{ soup.upper() }} !!!</p>
+<p>You will automatically go back in 2 seconds</p>
+
+<meta http-equiv="refresh" content="2;url=/servers/{{ hash }}">
+
+{% endblock %}

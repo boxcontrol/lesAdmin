@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+{% if current_user.is_authenticated %}
+    hello from index.html {{ current_user.username }}
+    <p><a href="/addServer">Add Server</a></p>
+    <p><a href="/servers">List Servers</a></p>
+{% endif %}
+{% endblock %}

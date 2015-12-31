@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row" xmlns="http://www.w3.org/1999/html">
+    <div class="col-log-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Server Name</th>
+                        <th>Server Location</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                {% for server in server_list %}
+                    <tr>
+                        <th>{{ server.id }}</th>
+                        <th><a href="/servers/{{ server.server_API_hash }}">{{ server.server_name }}</a></th>
+                        <th>{{ server.server_location }}</th>
+                        {% if command[server.id - 1] == 'online' %}
+                            <th>{{ command[server.id - 1] }}</th>
+                        {% else %}
+                            <th bgcolor="red">{{ command[server.id - 1] }}</th>
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+            <!--<div>
+                <button type="button" class="btn btn-primary"><a href="/addServer"><font color="white">Add Server</font></a></button>
+            </div>-->
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+            <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">RSS feed</h3>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for i in lastposts %}
+                        <tr>
+                            <th><a href="{{ i[1] }}"/>{{ i[0] }}</th>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div>
+        <div class="col-sm-8">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">#lowendspirit at freenode.net</h3>
+            </div>
+            <div class="panel-body" style="position:relative">
+                <iframe frameborder="0" http-equiv="refresh" content="600" src="http://127.0.0.1:5001/yield" width="100%" height="100%"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

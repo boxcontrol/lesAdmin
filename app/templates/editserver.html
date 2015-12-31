@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<title>Edit Server {{ form.server_name }}</title>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <div class="form-login">
+                <h4>Edit Server</h4>
+                <form action="" method="post" name="Edit Server">
+                    {{ form.hidden_tag() }}
+                    <br>{{ form.server_name(class_='form-control input-sm chat-input') }}</br>
+                    <br>{{ form.server_API_url(class_='form-control input-sm chat-input') }}</br>
+                    <br>{{ form.server_API_key(class_='form-control input-sm chat-input') }}</br>
+                    <br>{{ form.server_API_hash(class_='form-control input-sm chat-input') }}</br>
+                    <br>{{ form.server_location(class_='form-control input-sm chat-input') }}</br>
+                    <br>{{ form.server_description(class_='form-control input-sm chat-input') }}</br>
+                    {% if title=='Add server' %}
+                    <p>{{ form.server_submit(class_='btn btn-primary btn-md') }}</p>
+                    {% else %}
+                    <p>{{ form.server_edit(class_='btn btn-primary btn-md') }}</p>
+                    {% endif %}
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+    <h1>Please login first!!!</h1>
+
+{% endif %}
+{% endblock %}
+

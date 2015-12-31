@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <div class="form-login">
+            <h4 style="color:white">Edit user {{ user.username }} </h4>
+                <form action="" method="post" name="edit user">
+                    <br>{{ form.username(class_='form-control input-sm chat-input') }}</br>
+                    <br>{{ form.username(class_='form-control input-sm chat-input') }}</br>
+                    <p>{{ form.server_submit(class_='btn btn-primary btn-md', placeholder='Save Changes') }}</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+    <h1>Please login first!!!</h1>
+
+{% endif %}
+{% endblock %}
+
